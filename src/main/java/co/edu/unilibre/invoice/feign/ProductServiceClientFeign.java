@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import co.edu.unilibre.invoice.model.Product;
 
-@FeignClient(name = "product-service", url = "localhost:10010")
+@FeignClient(name = "product-service")
 public interface ProductServiceClientFeign {
 	
 	@GetMapping("/list")

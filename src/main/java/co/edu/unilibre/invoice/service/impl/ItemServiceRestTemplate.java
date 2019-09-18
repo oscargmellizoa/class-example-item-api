@@ -20,14 +20,14 @@ public class ItemServiceRestTemplate implements IItemService{
 	private RestTemplate clientRest;
 	
 	public List<Item> getAll(){
-		List<Product> products = Arrays.asList(clientRest.getForObject("http://localhost:10080/list", Product[].class));
+		List<Product> products = Arrays.asList(clientRest.getForObject("http://product-service/list", Product[].class));
 		return products.stream().map(prod -> new Item(prod, 1)).collect(Collectors.toList());
 	}
 	
 	public Item findById(Long id, Integer quantity) {
 		Map<String, String> pathVariable = new HashMap<>();
 		pathVariable.put("id", id.toString());
-		Product product = clientRest.getForObject("http://localhost:10080/{id}", Product.class, pathVariable);
+		Product product = clientRest.getForObject("http://product-service/{id}", Product.class, pathVariable);
 		return new Item(product, quantity);
 	}
 }

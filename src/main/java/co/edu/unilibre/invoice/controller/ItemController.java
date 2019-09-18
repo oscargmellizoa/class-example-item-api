@@ -15,7 +15,7 @@ import co.edu.unilibre.invoice.service.IItemService;
 public class ItemController {
 	
 	@Autowired(required = true)
-	@Qualifier("itemServiceFeign")
+	@Qualifier("itemServiceRestTemplate")
 	private IItemService itemService;
 	
 	@GetMapping("/list")
